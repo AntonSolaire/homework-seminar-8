@@ -240,3 +240,43 @@
 // 12 13 14 05
 // 11 16 15 06
 // 10 09 08 07
+
+
+void Show2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void Snake(int[,] array)
+{
+    int Number = 1;
+    int i = 0;
+    int j = 0;
+
+    while (Number <= 16)
+    {
+        array[i, j] = Number;
+        Number++;
+        if (i <= j + 1 && i + j < array.GetLength(1) - 1)
+            j++;
+        else if (i < j && i + j >= array.GetLength(0) - 1)
+            i++;
+        else if (i >= j && i + j > array.GetLength(1) - 1)
+            j--;
+        else
+            i--;
+    }
+}
+
+int[,] sqareMatrix = new int[4, 4];
+
+Snake(sqareMatrix);
+Show2DArray(sqareMatrix);
+
